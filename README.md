@@ -35,3 +35,20 @@
 │   ├── main.js // 引入Vue等资源、挂载Vue的入口js
 │   └── utils // 工具文件夹-封装的可复用的方法、功能
 └── yarn.lock // 用yarn自动生成的lock文件
+
+
+Module build failed: TypeError: Cannot read property 'vue' of undefined
+
+错误信息中可以看到vue没有被加载。 自己分析思路：
+
+webpack版本和现有的插件是不是存在冲突； 验证方案：下载官方Vue cli创建项目加入其中的插件，发现没有任何问题；
+项目package.json直接定义webpack 版本，发现仍然vue 未定义；
+自己百度无用。
+
+直接google，竟然有前史：
+
+https://github.com/vuejs/vue-loader/issues/1177
+
+原来是项目中的vue-loader插件破坏了。
+
+npm install vue-loader@latest --save-dev

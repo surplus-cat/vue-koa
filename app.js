@@ -15,7 +15,7 @@ import koaBodyparser from 'koa-bodyparser'
 const app = new Koa()
 const router = koaRouter()
 
-let port = process.env.PORT || 8889
+let port = process.env.PORT
 
 app.use(koaBodyparser())
 app.use(json())

@@ -1,3 +1,5 @@
+let port = process.env.PORT
+
 module.exports = {
   lintOnSave: false,
   devServer: {
@@ -8,12 +10,12 @@ module.exports = {
     hotOnly: false,
     proxy: {
       '/auth': {
-        target: 'http://localhost:8889',
-        ws: true,
+        target: `http://localhost:${port}`,
+        //ws: true,
         changeOrigin: true
       },
       '/api': {
-        target: 'http://localhost:8889',
+        target: `http://localhost:${port}`,
         changeOrigin: true
       }
     }, // 设置代理
